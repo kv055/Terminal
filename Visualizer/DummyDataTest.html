@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+<body>
+    <div id="Tschaat"></div>
+    <script>
+        
+
+        candleStick = {
+    //X-Axis
+    x: [
+ 
+    ],//String Value 
+    
+    //Y-Axis
+    close :[
+
+    ],//Number Value 
+    
+    high :[
+ 
+    ], 
+    
+    line: {col :'rgba(31,119,180,1)'}, 
+    
+    low: [
+
+    ],//Number Value 
+    
+    open: [
+
+    ],
+    //Number Value 
+
+    //Config
+    type: 'candlestick', 
+    xaxis: 'x', 
+    yaxis:'y'
+};
+
+        var line = {
+            y: [],
+            // x: candleStick.x,
+            x: [],
+
+            mode: 'lines',
+            type: 'scatter'
+        };
+
+        var layout = {
+            dragmode: 'zoom', 
+            margin: {
+                r: 10, 
+                t: 25, 
+                b: 40, 
+                l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+                autorange: true, 
+                domain: [0, 1], 
+                range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]], //Chart Range
+                rangeslider: {range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]]}, //RangeSlider Range
+                title: 'Date', 
+                type: 'date'
+            }, 
+            yaxis: {
+                autorange: true, 
+                domain: [0, 1], 
+                type: 'linear'
+            }
+        };
+
+        var data = [
+            line,
+            candleStick  
+            
+        ];
+
+        let ChartJSgenerator = async function () {
+            //Fetch Data for MA Indikator
+            const respo = await fetch("http://localhost:5500/MAPastData");
+            const ans = await respo.json();
+            //Push Data to Templates
+            for (element of ans.MovingAverage[1]){
+                line.y.push(element);
+            };
+            for (element of ans.MovingAverage[0]){
+                line.x.push(element);
+            };
+
+            const response = await fetch("https://www.binance.com/api/v3/klines?symbol=ETHUSDT&interval=1d");
+            const answer = await response.json();
+            for (element of answer){
+                candleStick.x.push(new Date(element[0]).toISOString().split('T')[0])
+                candleStick.high.push(parseFloat(element[2]))
+                candleStick.low.push(parseFloat(element[3]))
+                candleStick.open.push(parseFloat(element[1]))
+                candleStick.close.push(parseFloat(element[4]))
+            };
+
+            Plotly.newPlot('Tschaat', data, layout);
+        }
+        ChartJSgenerator()
+    </script>
+</body>
+</html>
