@@ -14,7 +14,8 @@ const OHLC = {
     Pair: {
         Ethereum: 'XETHZUSD'
     },
-    StartDate: new Date('2021-04-01').getTime()/1000
+    //Find a way to put time data in here
+    StartDate: new Date('2021-01-01').getTime()/1000
 }
 
 //HTTP Header konstruieren

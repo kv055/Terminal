@@ -1,3 +1,6 @@
+const LinePlot = require('/home/hackerboi/Dokumente/Terminal/Server/LineChartPlot')
+const MarkerPlot = require('/home/hackerboi/Dokumente/Terminal/Server/MarkerChartPlot')
+
 const express = require("express");
 const cors = require('cors');
 
@@ -9,21 +12,30 @@ app.listen(port, ()=>{
     console.log("Alles Roger auf Port ",port);
 });
 
-const APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
-const AveragePrice = require('/home/hackerboi/Dokumente/Terminal/OHLCtoAverageFormater/OHLCtoAverage')
-const MAPastData = require('/home/hackerboi/Dokumente/Terminal/MovingAverage/MAPastData')
 
+let Server = async (OHLC,LineGraph, MarkerGraph)=>{
+   
+    let Line = LinePlot(await LineGraph)
+    let Marker = MarkerPlot(await MarkerGraph)
 
-let tesr = async ()=>{
-    let MovingAverage = await MAPastData(AveragePrice,APIanswer,20);
-    app.get('/MAPastData',(request, response) => {
+    app.get('/Indicators',(request, response) => {
         response.json({
-        MovingAverage
+           Line,Marker
+          
+        });
+      });
+    
+    let Candles = await OHLC
+      app.get('/OHLC',(request, response) => {
+        response.json({
+        Candles
         });
       });
 
     
 }
-tesr()
+
+
+module.exports = Server;
 
 

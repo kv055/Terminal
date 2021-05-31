@@ -2,6 +2,7 @@ let APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
 
 //funktioniert mit dem Binance Link, aber das Datum wird falsch formatiert
 //funktioniert mit Kraken, da kommt dann eine Fehlermeldung, und das mit dem .result.XETZUSD querry string musst du noch lösen
+
 let HistoricalPriceFormater = async function (api_answer){
     let answer = await api_answer;
     let PriceSourceArray = [];
