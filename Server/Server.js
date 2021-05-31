@@ -1,3 +1,4 @@
+const OHLCPlot = require('/home/hackerboi/Dokumente/Terminal/Server/OHLCChartPlot')
 const LinePlot = require('/home/hackerboi/Dokumente/Terminal/Server/LineChartPlot')
 const MarkerPlot = require('/home/hackerboi/Dokumente/Terminal/Server/MarkerChartPlot')
 
@@ -17,20 +18,22 @@ let Server = async (OHLC,LineGraph, MarkerGraph)=>{
    
     let Line = LinePlot(await LineGraph)
     let Marker = MarkerPlot(await MarkerGraph)
-
-    app.get('/Indicators',(request, response) => {
-        response.json({
-           Line,Marker
-          
-        });
-      });
     
-    let Candles = await OHLC
-      app.get('/OHLC',(request, response) => {
-        response.json({
-        Candles
-        });
+    app.get('/Indicators',(request, response) => {
+      response.json({
+        Line,Marker
+          
+       });
+    });
+    
+    let CandleSticks = OHLCPlot(await OHLC)
+    console.log(CandleSticks);
+
+    app.get('/OHLC',(request, response) => {
+      response.json({
+        CandleSticks
       });
+    });
 
     
 }

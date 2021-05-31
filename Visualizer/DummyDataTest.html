@@ -11,68 +11,8 @@
 <body>
     <div id="Tschaat"></div>
     <script>
-        
 
-        candleStick = {
-    //X-Axis
-    x: [
- 
-    ],//String Value 
-    
-    //Y-Axis
-    close :[
-
-    ],//Number Value 
-    
-    high :[
- 
-    ], 
-    
-    line: {col :'rgba(31,119,180,1)'}, 
-    
-    low: [
-
-    ],//Number Value 
-    
-    open: [
-
-    ],
-    //Number Value 
-
-    //Config
-    type: 'candlestick', 
-    xaxis: 'x', 
-    yaxis:'y'
-};      
-
-        var layout = {
-            dragmode: 'zoom', 
-            margin: {
-                r: 10, 
-                t: 25, 
-                b: 40, 
-                l: 60
-            }, 
-            showlegend: false, 
-            xaxis: {
-                autorange: true, 
-                domain: [0, 1], 
-                range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]], //Chart Range
-                rangeslider: {range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]]}, //RangeSlider Range
-                title: 'Date', 
-                type: 'date'
-            }, 
-            yaxis: {
-                autorange: true, 
-                domain: [0, 1], 
-                type: 'linear'
-            }
-        };
-
-        var data = [
-            candleStick  
-            
-        ];
+        var data = [];
 
         let ChartJSgenerator = async function () {
             //To fetch multiple URLs, https://gist.github.com/bschwartz757/5d1ff425767fdc6baedb4e5d5a5135c8
@@ -82,7 +22,7 @@
             const ans = await respo.json();
             console.log('ans',ans);
             //Push Data to Templates
-            ans.line.forEach(element => {
+            ans.Line.forEach(element => {
                 data.push(element)
             });
             ans.Marker.forEach(element => {
@@ -94,13 +34,8 @@
 
             const response = await fetch("http://localhost:5500/OHLC");
             const answer = await response.json();
-            for (element of answer.Candles){
-                candleStick.x.push(new Date(element[0]*1000).toISOString())
-                candleStick.high.push(parseFloat(element[2]))
-                candleStick.low.push(parseFloat(element[3]))
-                candleStick.open.push(parseFloat(element[1]))
-                candleStick.close.push(parseFloat(element[4]))
-            };
+            data.push(answer.CandleSticks.candleStick)
+            let layout = answer.CandleSticks.layout
 
             Plotly.newPlot('Tschaat', data, layout);
         }
