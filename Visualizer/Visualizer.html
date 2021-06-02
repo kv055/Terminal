@@ -57,25 +57,7 @@
             // line
         ];//Choose which Trace gets rendered on the chart(multiple traces can be rendered)
 
-        var layout2 = {
-            xaxis: {
-                range: [ Math.min(line.x), Math.max(line.x) ]
-            },
-            yaxis: {
-                range: [Math.min(line.y), Math.max(line.y)]
-            },
-            // legend: {
-            //     y: 0.5,
-            //     yref: 'paper',
-            //     font: {
-            //     family: 'Arial, sans-serif',
-            //     size: 20,
-            //     color: 'grey',
-            //     }
-            // },
-            title:'Data Labels on the Plot'
-        };
-
+        
         var layout = {
         dragmode: 'zoom', 
             margin: {
@@ -215,7 +197,7 @@
 
             Plotly.newPlot('myDiv', data, layout);
 
-            Plotly.newPlot('myDiv2', line, layout);
+
         }
         ChartJSgenerator()
        

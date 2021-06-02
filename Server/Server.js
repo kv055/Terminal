@@ -27,7 +27,6 @@ let Server = async (OHLC,LineGraph, MarkerGraph)=>{
     });
     
     let CandleSticks = OHLCPlot(await OHLC)
-    console.log(CandleSticks);
 
     app.get('/OHLC',(request, response) => {
       response.json({

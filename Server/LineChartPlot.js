@@ -19,3 +19,4 @@ let creator = (array)=>{
 }
 
 module.exports = creator
+
