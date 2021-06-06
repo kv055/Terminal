@@ -15,7 +15,7 @@ const OHLC = {
         Ethereum: 'XETHZUSD'
     },
     //Find a way to put time data in here
-    StartDate: new Date('2021-01-01').getTime()/1000
+    StartDate: new Date('2021-03-01').getTime()/1000
 }
 
 //HTTP Header konstruieren
@@ -25,7 +25,7 @@ const Options = {
     body: JSON.stringify(
       {
         pair: OHLC.Pair.Ethereum,
-        interval: OHLC.CandleSize.Day,
+        interval: OHLC.CandleSize.Minutes5,
         since: OHLC.StartDate
       }
     ),

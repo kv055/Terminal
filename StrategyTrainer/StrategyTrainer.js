@@ -1,30 +1,26 @@
-//This is the Pseudo Code
-const nedb = require('nedb');
-
-//Datenbank Config 
-const database = new nedb('MA_ChangesST.db');
-database.loadDatabase();
+let TestObject = require('/home/hackerboi/Dokumente/Terminal/StrategyTrainer/ObjectFormater')
 
 
 let tradingHistory = []; 
 let collateral = 130;
 //Get acces to database with a tradehistory
-database.find({}, (err, data) => {
-    //example 20 vs 50 ma, sold or bought at MA1overMA2=true/false?
+let train = async (CrossingsObject)=>{
+    let test = await TestObject(CrossingsObject)
+    // console.log('test',test);
     let schwankungsArray = [];
-    data.forEach(element => {
+    test.forEach(element => {
          
         //#1 Von jedem element den last price nehmen und in nen array pushen
-        schwankungsArray.push(element.Price)
+        schwankungsArray.push(element.lastPrice)
        
         //Specify at which trade you sold or bought
         let deirektion = null;
-        if (element.MA1overMA2 === true) {
+        if (element.MAonTop === 5) {
             deirektion = 'Long'
             } else {
             deirektion = 'Short'  
         }
-        // console.log(deirektion);
+       
        //#2 Wenn Array > 2 einträge hat, alte einträge löschen
         if(schwankungsArray.length > 2){
             schwankungsArray.shift()
@@ -41,13 +37,17 @@ database.find({}, (err, data) => {
 
         let trades = {
             volatilityBeforeClosing : swing(),
-            tradeClosingPrice : element.Price,
-            openingDirection : deirektion
+            tradeClosingPrice : element.lastPrice,
+            openingDirection : deirektion,
+            collateral: null,
+            time: element.Time,
+            MA1: element.MA1,
+            MA2: element.MA2
         }
         tradingHistory.push(trades)
+        // console.log(tradingHistory);
     });
     
-   console.log(tradingHistory); 
     
     let swingAbsolut = function(col){
         
@@ -56,30 +56,24 @@ database.find({}, (err, data) => {
             if (element.openingDirection === 'Long'){
                 let schwankungAbsolut = (col/100)*(element.volatilityBeforeClosing * (-1));
                 col = col + schwankungAbsolut;
-                console.log(col);
+                element.collateral = col
+                // console.log(element);
             }else{
-                let schwankungAbsolut = (collateral/100)*element.volatilityBeforeClosing;
+                let schwankungAbsolut = (col/100)*element.volatilityBeforeClosing;
                 col = col + schwankungAbsolut;
-                console.log(col);
+                element.collateral = col
+                // console.log(element);
             }
     
         })
         
     }
     swingAbsolut(collateral);
-
-
-
-});
-
+    // console.log(tradingHistory);
+    return tradingHistory
+} 
     
-
-
-
-
-
-
-
+module.exports = train
 //TODO: 
 // #1 Datanbank muss alle einträge Chronologich ordnen
 // im idealfall muss das gelogde immer buy sell abwechseln

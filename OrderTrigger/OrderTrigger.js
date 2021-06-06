@@ -1,3 +1,14 @@
+const Binance = require('node-binance-api');
+const binance = new Binance().options({
+  APIKEY: '<key>',
+  APISECRET: '<secret>'
+});
+let quantity = 1;
+binance.marketBuy("", quantity);
+
+
+
+
 // // async function OrderTrigger(){
     
 // // database.find({}, (err, data) => {

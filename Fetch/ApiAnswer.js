@@ -10,15 +10,25 @@ let KrakenOptions = Kraken.Options;
 
 let binanceLink = binanceOHLC.Url+binanceOHLC.Pair.Bitcon+binanceOHLC.CandleSize.Day;
 
-let KrakenReturnString = 'result'
-
 //Make API-Call
-let APIanswer = async function(){
-    let answer = await fetch(KrakenLink, KrakenOptions)
-    .then(res => res.json())
-    .catch (error => console.log('Error Report: ',error))
-    // console.log(answer[KrakenReturn]);
-    return answer[KrakenReturnString][Kraken.OHLC.Pair.Ethereum];
+
+let APIanswer = {
+
+    Kraken : async function(){
+        let answer = await fetch(KrakenLink, KrakenOptions)
+        .then(res => res.json())
+        .catch (error => console.log('Error Report: ',error))
+        // console.log(answer[KrakenReturn]);
+        return answer.result[Kraken.OHLC.Pair.Ethereum];
+    },
+
+    Binance : async function(){
+        let answer = await fetch(binanceLink)
+        .then(res => res.json())
+        .catch (error => console.log('Error Report: ',error))
+        // console.log(answer[KrakenReturn]);
+        return answer;
+    }
 }
 
 module.exports = APIanswer;

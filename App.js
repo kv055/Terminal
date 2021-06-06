@@ -13,34 +13,39 @@ const MALiveData = require('/home/hackerboi/Dokumente/Terminal/Strategies/Moving
 const MACrossingPast = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/MACrossingsPast')
 const MACrossingLive = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/MACrossingsLive')
 
-const CrossingsPastDummyData = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/CrossingsPastDummyData')
 //Server
 const Server = require('/home/hackerboi/Dokumente/Terminal/Server/Server')
 
+//StrategyTester
+const StrategyTester = require('/home/hackerboi/Dokumente/Terminal/StrategyTrainer/StrategyTrainer')
+
 
 let Test = async()=>{
-    let OHLC = await APIanswer()
-    let Average = await AveragePrice(OHLC)
+    let OHLC = await APIanswer.Kraken()
+    let Average = await AveragePrice.Kraken(OHLC)
+    console.log(Average);
 
-    let MAPast5 = await MAPastData(Average, 5)
-    let MAPast10 = await MAPastData(Average, 10)
+    // let MAPast5 = await MAPastData(Average, 5)
+    // let MAPast10 = await MAPastData(Average, 10)
 
-    let CrossingPast = await MACrossingPast(5,10, Average)
+    // let CrossingPast = await MACrossingPast(5,10, Average)
     
-
-    let PriceGraph = OHLC
-    let LineGraph = [MAPast5,MAPast10]
-    let MarkerGraph = [CrossingPast]
+    // let Tester = await StrategyTester(CrossingPast)
+    // let PriceGraph = OHLC
+    // let LineGraph = [MAPast5,MAPast10]
+    // let MarkerGraph = [Tester]
     
+    // console.log(Tester);
+    // Server(PriceGraph,LineGraph, MarkerGraph)
 
-    Server(PriceGraph,LineGraph, MarkerGraph)
-
-    //Für alle Live Funktionen
+    
+    // console.log(Tester);
+    
+    // //Für alle Live Funktionen
     // setInterval(async () => {
-    //     let MALive = await MALiveData(Average, 50)
-    //     let MACrossLive = await MACrossingLive(5,10, Average
+    //     let MACrossLive = await MACrossingLive(5,10, Average)
     //     console.log(MACrossLive);
-    //     }, 5000);
+    //     }, 300000);
 }
 Test()
 
