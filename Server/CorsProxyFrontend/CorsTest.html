@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <p></p>
+    </body>
+    <script>
+        let y =
+        async  () => {
+            const response = await fetch('https://api.kraken.com/0/public/OHLC');
+        const answer = await response.json();
+        console.log(answer);
+        }
+        y()
+
+        let x =
+        async  () => {
+            const response = await fetch("http://localhost:5000/position2");
+        const answer = await response.json();
+        console.log(answer);
+        }
+        x()
+
+        
+    </script>
+</html>
