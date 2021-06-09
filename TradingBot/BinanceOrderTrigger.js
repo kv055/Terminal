@@ -1,13 +1,6 @@
-// let bodyParser = require('body-parser')
+let binance = require('/home/hackerboi/Dokumente/Terminal/TradingBot/BinanceBotConfig')
 
-const Binance = require('node-binance-api');
-const binance = new Binance().options({
-  APIKEY: 'gfkT7VFkxn0aZnJUn4DK5WPBaGmR6hv05dTlRVvj6OmWlbfKWVudl1kM1QuCtggP',
-  APISECRET: '4pBVUmOik3wEbWj2Ou3J3sYXOyzTb204AF60x7ycWJdIjLrjOsAsQW9JMXiADare',
-  useServerTime: true,
-  verbose: true
-});
-let quantity = 1;
+// let quantity = 1;
 //Quantity always refers to the first asset of the Pair aka not the base asset (UNIBNB, quantity 1 will buy/sell one Uni)
 binance.marketSell("UNIBNB", quantity ,(error, response) => {
   if ( error ) return console.log(error);
