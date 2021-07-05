@@ -1,3 +1,6 @@
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+
 const fetch = require('node-fetch');
 const Kraken = require('./KrakenOHLCRequest');
 const binanceOHLC = require('./BinanceOHLCRequest')
@@ -18,7 +21,7 @@ let APIanswer = {
         let answer = await fetch(KrakenLink, KrakenOptions)
         .then(res => res.json())
         .catch (error => console.log('Error Report: ',error))
-        // console.log(answer[KrakenReturn]);
+        //console.log(answer.result[Kraken.OHLC.Pair.Ethereum]);
         return answer.result[Kraken.OHLC.Pair.Ethereum];
     },
 
@@ -26,7 +29,7 @@ let APIanswer = {
         let answer = await fetch(binanceLink)
         .then(res => res.json())
         .catch (error => console.log('Error Report: ',error))
-        // console.log(answer[KrakenReturn]);
+        //console.log(answer[KrakenReturn]);
         return answer;
     }
 }

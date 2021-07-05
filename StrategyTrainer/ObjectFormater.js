@@ -1,13 +1,13 @@
-//Fetch
-const APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
 //OHLCtoAverage
-const AveragePrice = require('/home/hackerboi/Dokumente/Terminal/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
 let test = async (CrossingsObject) => {
 
     // let CrossingsObject = await MACrossingPast(5,10,await AveragePrice(await APIanswer()))
-    let AveragePriceObject = await AveragePrice(await APIanswer())
+    let AveragePriceObject = await AveragePrice.Kraken()
     let AveragePriceObject2 = []
     AveragePriceObject.forEach(element => 
         AveragePriceObject2.push(element[0], element[1])

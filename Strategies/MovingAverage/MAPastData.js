@@ -1,23 +1,31 @@
-const APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
-const AveragePrice = require('/home/hackerboi/Dokumente/Terminal/OHLCtoAverageFormater/OHLCtoAverage')
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+
+const APIanswer = require(windowsPath+"/Fetch/ApiAnswer")
+const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
 let MACalculator = async (formater,length) => { //function reference
+    
     
     let globalReturn = {
         time: [],
         value: []
     }
+    
     formater.forEach(item =>{ 
+        
         let index = formater.indexOf(item)
-      
         let TagesDaten = []
 
         //Add the last X(days, weeks, hours, whatever) datapoints together and 
         //push them into the Array
         for(let i=0; i<length; i++) {
+
             const dayData = formater[index-i]
+            
             if (typeof dayData !== 'undefined' ) {
-                TagesDaten.push(Math.trunc(dayData[0]))  
+                TagesDaten.push(Math.trunc(dayData[0]))
+                  
             }
         }
         let sum = null;
@@ -36,11 +44,12 @@ let MACalculator = async (formater,length) => { //function reference
                 Math.trunc(sum/length)
             )
         }   
-
+        
     })
+    
     return globalReturn
 }
-
+//MACalculator(AveragePrice.Binance)
 module.exports = MACalculator
 
 

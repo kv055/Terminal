@@ -1,5 +1,7 @@
-let TestObject = require('/home/hackerboi/Dokumente/Terminal/StrategyTrainer/ObjectFormater')
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
+let TestObject = require(windowsPath+'/StrategyTrainer/ObjectFormater')
 
 let tradingHistory = []; 
 let collateral = 130;

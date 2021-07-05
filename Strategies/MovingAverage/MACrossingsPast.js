@@ -1,7 +1,10 @@
-const APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
-const AveragePrice = require('/home/hackerboi/Dokumente/Terminal/OHLCtoAverageFormater/OHLCtoAverage')
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-const MAPastData = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/MAPastData')
+const APIanswer = require(windowsPath+"/Fetch/ApiAnswer")
+const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+
+const MAPastData = require(windowsPath+'/Strategies/MovingAverage/MAPastData')
 
 let changewatcher = [];
 let MAtoMAcompare = async function (MARange1, MARange2, PriceSource){
@@ -62,11 +65,12 @@ let MAtoMAcompare = async function (MARange1, MARange2, PriceSource){
    return globalReturn; 
 }
 
-// let test = async () => {
+/*  let test = async () => {
     
-//     console.log(await MAtoMAcompare(5,10,await AveragePrice(await APIanswer())));
-// }
-// test()
+     console.log(await MAtoMAcompare(5,10,await AveragePrice.Kraken));
+}
+test() */
+
 module.exports = MAtoMAcompare
 
 

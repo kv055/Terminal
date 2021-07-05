@@ -1,6 +1,9 @@
-const OHLCPlot = require('/home/hackerboi/Dokumente/Terminal/Server/OHLCChartPlot')
-const LinePlot = require('/home/hackerboi/Dokumente/Terminal/Server/LineChartPlot')
-const MarkerPlot = require('/home/hackerboi/Dokumente/Terminal/Server/MarkerChartPlot')
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+
+const OHLCPlot = require(windowsPath+'/Server/OHLCChartPlot')
+const LinePlot = require(windowsPath+'/Server/LineChartPlot')
+const MarkerPlot = require(windowsPath+'/Server/MarkerChartPlot')
 
 const express = require("express");
 const cors = require('cors');
@@ -21,8 +24,8 @@ let Server = async (OHLC,LineGraph, MarkerGraph)=>{
     
     app.get('/Indicators',(request, response) => {
       response.json({
-        Line,Marker
-          
+        Line
+        ,Marker  
        });
     });
     
