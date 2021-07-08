@@ -1,18 +1,34 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
+//OHLCtoAverage
+const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+//Get our Strategy
 let TestObject = require(windowsPath+'/StrategyTrainer/ObjectFormater')
 
-let tradingHistory = []; 
-let collateral = 130;
-//Get acces to database with a tradehistory
-let train = async (CrossingsObject)=>{
-    let test = await TestObject(CrossingsObject)
+
+let tradingHistory = [];
+
+//Pair ETHUSD
+//BaseCollateral example:USD
+let BaseCollateral = 130;
+//ETH
+
+
+
+let train = async ()=>{
+
+    //Get the Average historical price
+    let AveragePriceObject = await AveragePrice.Kraken()
+
+    //Get our Strategy
+    let test = await TestObject()
     // console.log('test',test);
+
     let schwankungsArray = [];
     test.forEach(element => {
          
-        //#1 Von jedem element den last price nehmen und in nen array pushen
+        //#1 Von jedem element lastprice nehmen und in nen array pushen
         schwankungsArray.push(element.lastPrice)
        
         //Specify at which trade you sold or bought
@@ -41,7 +57,8 @@ let train = async (CrossingsObject)=>{
             volatilityBeforeClosing : swing(),
             tradeClosingPrice : element.lastPrice,
             openingDirection : deirektion,
-            collateral: null,
+            BaseCollateral: null,
+            TradingCollateral : null,
             time: element.Time,
             MA1: element.MA1,
             MA2: element.MA2
@@ -58,23 +75,31 @@ let train = async (CrossingsObject)=>{
             if (element.openingDirection === 'Long'){
                 let schwankungAbsolut = (col/100)*(element.volatilityBeforeClosing * (-1));
                 col = col + schwankungAbsolut;
-                element.collateral = col
+                element.BaseCollateral = col
+                element.TradingCollateral = col/element.tradeClosingPrice
                 // console.log(element);
             }else{
                 let schwankungAbsolut = (col/100)*element.volatilityBeforeClosing;
                 col = col + schwankungAbsolut;
-                element.collateral = col
+                element.BaseCollateral = col
+                element.TradingCollateral = col/element.tradeClosingPrice
                 // console.log(element);
             }
     
         })
         
     }
-    swingAbsolut(collateral);
-    // console.log(tradingHistory);
+    swingAbsolut(BaseCollateral);
+    //console.log(tradingHistory);
     return tradingHistory
 } 
+
+/* let testr = async ()=>{
+    console.log(await train());
     
+}
+testr() */   
+
 module.exports = train
 //TODO: 
 // #1 Datanbank muss alle einträge Chronologich ordnen

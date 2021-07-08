@@ -1,25 +1,33 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
+//Need the Average Price for all calculations
 //OHLCtoAverage
 const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+//Need a Strategy to create Signals that can be read by the StrategyTrainer module
+//Example: create an object when two MA's cross each other
 
-let test = async (CrossingsObject) => {
+//MACrossingsPast
+const Crossings = require(windowsPath+'/Strategies/MovingAverage/MACrossingsPast')
 
-    // let CrossingsObject = await MACrossingPast(5,10,await AveragePrice(await APIanswer()))
+let test = async () => {
+    //Get the Average historical price
     let AveragePriceObject = await AveragePrice.Kraken()
+    //Get the Historical MA Crossings
+    let CrossingsObject = await Crossings(5,10,AveragePriceObject)
+
     let AveragePriceObject2 = []
     AveragePriceObject.forEach(element => 
         AveragePriceObject2.push(element[0], element[1])
     )
-    // console.log(CrossingsObject);
+
     let lll = []
     for (let index = 0; index < CrossingsObject.time.length; index++) {
         
         let dateForPrice = CrossingsObject.time[index];
         let priceIndex = AveragePriceObject2.indexOf(dateForPrice)
-        // console.log(priceIndex,AveragePriceObject2[priceIndex]);
         
+        //Creating an Object that can beread by the StrategieTrainer module
         let retöanobj= {
             MAonTop: CrossingsObject.MAonTop[index],
             MA1: {
@@ -35,10 +43,8 @@ let test = async (CrossingsObject) => {
             }
             lll.push(retöanobj);
     }
-//    console.log(lll);
    return lll
     
 }
-
 
 module.exports = test

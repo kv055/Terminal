@@ -17,7 +17,7 @@ const MACrossingPast = require(windowsPath+'/Strategies/MovingAverage/MACrossing
 const Server = require('./Server/Server.js')
 
 //StrategyTester
-//const StrategyTester = require('./StrategyTrainer/StrategyTrainer')
+const StrategyVisualizer = require('./StrategyTrainer/TradesVisualizer')
 
 
 let Test = async()=>{
@@ -30,15 +30,16 @@ let Test = async()=>{
 
     let CrossingPast = await MACrossingPast(5,10, Average)
 
-     //let Tester = await StrategyTester(CrossingPast)
-     let PriceGraph = OHLC
-     let LineGraph = [MAPast5,MAPast10,AverageToRender]
-     let MarkerGraph = [CrossingPast]
-    
-     //console.log(Tester);
-     Server(PriceGraph, LineGraph, MarkerGraph)
+    let Tester = await StrategyVisualizer()
 
-    
+    let PriceGraph = OHLC
+    let LineGraph = [MAPast5,MAPast10]
+    let MarkerGraph = [Tester]
+
+    //console.log(Tester);
+    Server(PriceGraph, LineGraph, MarkerGraph)
+
+
     // console.log(Tester);
     
     // //Für alle Live Funktionen

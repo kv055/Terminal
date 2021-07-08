@@ -1,25 +1,26 @@
-//Formating all trades so that they can be rendered on a plot
-//Fetch
-const APIanswer = require("/home/hackerboi/Dokumente/Terminal/Fetch/ApiAnswer")
+let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
+let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-//OHLCtoAverage
-const AveragePrice = require('/home/hackerboi/Dokumente/Terminal/OHLCtoAverageFormater/OHLCtoAverage')
-const MACrossingPast = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/MACrossingsPast')
-const StrategyTester = require('/home/hackerboi/Dokumente/Terminal/StrategyTrainer/StrategyTrainer')
-
+const Trades = require(windowsPath+'/StrategyTrainer/StrategyTrainer.js')
 //import for module Testing
 let main = async ()=>{
-let OHLC = await APIanswer()
-let Average = await AveragePrice(OHLC)
-let CrossingPast = await MACrossingPast(5,10, Average)
-let Tester = await StrategyTester(CrossingPast)
 
-RenderArray = {
-    value: [],
-    time: []
+    let Tester = await Trades()
+
+    RenderArray = {
+        value: [],
+        time: [],
+        metadata: []
+    }
+
+    Tester.forEach(element =>{
+        RenderArray.value.push(element.tradeClosingPrice)
+        RenderArray.time.push(element.time)
+        RenderArray.metadata.push(element)
+    })
+
+    
+    return RenderArray
 }
-Tester.forEach(element =>{
-    console.log(element,element.time,element.tradeClosingPrice);
-})
-}
-main()
+
+module.exports = main

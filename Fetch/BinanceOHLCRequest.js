@@ -20,7 +20,8 @@ const binanceOHLC = {
         Month: '&interval=1M'
     },
     Pair: {
-        Bitcon: '?symbol=BTCUSDT'
+        Bitcon: '?symbol=BTCUSDT',
+        Ethereum: '?symbol=BTCUSDT'
     },
 }
 

@@ -12,7 +12,8 @@ const OHLC = {
         Month: 21600
     },
     Pair: {
-        Ethereum: 'XETHZUSD'
+        Ethereum: 'XETHZUSD',
+        Bitcoin: 'XXBTZUSD'
     },
     //Find a way to put time data in here
     StartDate: new Date('2021-03-01').getTime()/1000
@@ -24,7 +25,7 @@ const Options = {
     method: 'POST',
     body: JSON.stringify(
       {
-        pair: OHLC.Pair.Ethereum,
+        pair: OHLC.Pair.Bitcoin,
         interval: OHLC.CandleSize.Day,
         since: OHLC.StartDate
       }

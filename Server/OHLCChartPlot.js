@@ -46,13 +46,14 @@ let creator = (array)=>{
             domain: [0, 1], 
             range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]], //Chart Range
             rangeslider: {range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]]}, //RangeSlider Range
-            title: 'Date', 
             type: 'date'
         }, 
         yaxis: {
             autorange: true, 
             domain: [0, 1], 
-            type: 'linear'
+            type: 'log',
+            fixedrange: false,
+            //rangeslider: {range: [candleStick.x[0],candleStick.x[candleStick.x.length-1]]},
         }
     };
 

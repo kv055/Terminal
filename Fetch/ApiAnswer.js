@@ -22,14 +22,13 @@ let APIanswer = {
         .then(res => res.json())
         .catch (error => console.log('Error Report: ',error))
         //console.log(answer.result[Kraken.OHLC.Pair.Ethereum]);
-        return answer.result[Kraken.OHLC.Pair.Ethereum];
+        return answer.result[Kraken.OHLC.Pair.Bitcoin];
     },
 
     Binance : async function(){
         let answer = await fetch(binanceLink)
         .then(res => res.json())
         .catch (error => console.log('Error Report: ',error))
-        //console.log(answer[KrakenReturn]);
         return answer;
     }
 }
