@@ -2,7 +2,7 @@ let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
 //This file just formats the data from
-const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
 let runtime = async()=>{
     let Average = await AveragePrice.Kraken()

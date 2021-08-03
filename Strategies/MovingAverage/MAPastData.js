@@ -1,8 +1,8 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-const APIanswer = require(windowsPath+"/Fetch/ApiAnswer")
-const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const APIanswer = require(ubuntuPath+"/Fetch/ApiAnswer")
+const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
 let MACalculator = async (formater,length) => { //function reference
     

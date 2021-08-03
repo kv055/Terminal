@@ -1,10 +1,10 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-const APIanswer = require(windowsPath+"/Fetch/ApiAnswer")
-const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const APIanswer = require(ubuntuPath+"/Fetch/ApiAnswer")
+const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
-const MAPastData = require(windowsPath+'/Strategies/MovingAverage/MAPastData')
+const MAPastData = require(ubuntuPath+'/Strategies/MovingAverage/MAPastData')
 
 let changewatcher = [];
 let MAtoMAcompare = async function (MARange1, MARange2, PriceSource){

@@ -1,7 +1,7 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-let APIanswer = require(windowsPath+"/Fetch/ApiAnswer")
+let APIanswer = require(ubuntuPath+"/Fetch/ApiAnswer")
 
 //funktioniert mit dem Binance Link, aber das Datum wird falsch formatiert
 //funktioniert mit Kraken, da kommt dann eine Fehlermeldung, und das mit dem .result.XETZUSD querry string musst du noch lösen

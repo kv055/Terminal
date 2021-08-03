@@ -2,9 +2,9 @@ let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
 //OHLCtoAverage
-const AveragePrice = require(windowsPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 //Get our Strategy
-let TestObject = require(windowsPath+'/StrategyTrainer/ObjectFormater')
+let TestObject = require(ubuntuPath+'/StrategyTrainer/ObjectFormater')
 
 
 let tradingHistory = [];

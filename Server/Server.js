@@ -1,9 +1,9 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-const OHLCPlot = require(windowsPath+'/Server/OHLCChartPlot')
-const LinePlot = require(windowsPath+'/Server/LineChartPlot')
-const MarkerPlot = require(windowsPath+'/Server/MarkerChartPlot')
+const OHLCPlot = require(ubuntuPath+'/Server/OHLCChartPlot')
+const LinePlot = require(ubuntuPath+'/Server/LineChartPlot')
+const MarkerPlot = require(ubuntuPath+'/Server/MarkerChartPlot')
 
 const express = require("express");
 const cors = require('cors');

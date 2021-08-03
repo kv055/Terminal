@@ -1,7 +1,7 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
-const Trades = require(windowsPath+'/StrategyTrainer/StrategyTrainer.js')
+const Trades = require(ubuntuPath+'/StrategyTrainer/StrategyTrainer.js')
 //import for module Testing
 let main = async ()=>{
 

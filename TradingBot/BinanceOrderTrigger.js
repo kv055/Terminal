@@ -1,16 +1,18 @@
 let binance = require('/home/hackerboi/Dokumente/Terminal/TradingBot/BinanceBotConfig')
+let balance = require('/home/hackerboi/Dokumente/Terminal/TradingBot/BinanceGetBallances')
+
 
 // let quantity = 1;
 //Quantity always refers to the first asset of the Pair aka not the base asset (UNIBNB, quantity 1 will buy/sell one Uni)
-binance.marketSell("UNIBNB", quantity ,(error, response) => {
-  if ( error ) return console.log(error);
-  console.info("Account details response:", response)
-})
+// binance.marketSell("UNIBNB", quantity ,(error, response) => {
+//   if ( error ) return console.log(error);
+//   console.info("Account details response:", response)
+// })
 
-binance.marketBuy("UNIBNB", quantity ,(error, response) => {
-  if ( error ) return console.log(error);
-  console.info("Account details response:", response)
-})
+// binance.marketBuy("UNIBNB", quantity ,(error, response) => {
+//   if ( error ) return console.log(error);
+//   console.info("Account details response:", response)
+// })
 
 
 
