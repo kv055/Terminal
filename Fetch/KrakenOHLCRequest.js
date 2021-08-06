@@ -26,7 +26,7 @@ const Options = {
     body: JSON.stringify(
       {
         pair: OHLC.Pair.Bitcoin,
-        interval: OHLC.CandleSize.Day,
+        interval: OHLC.CandleSize.Hour,
         since: OHLC.StartDate
       }
     ),

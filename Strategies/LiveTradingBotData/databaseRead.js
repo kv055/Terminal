@@ -4,11 +4,11 @@ const uri = "mongodb+srv://HarterMongo:BehinderterMongo@cluster0.ojn4q.mongodb.n
 
 const client = new MongoClient(uri, { useUnifiedTopology: true }); // useUnifiedTopology removes a warning
 
-async function mainframe(){
+async function mainframe(Database, Collection, SearchParameters){
     await client.connect()
     //let obj = await client.db().admin().listDatabases()
     function query(callback) {
-        const result = client.db("LiveTesting").collection("LogBook").find({}).toArray(function(err, result) {
+        const result = client.db(Database).collection(Collection).find({SearchParameters}).toArray(function(err, result) {
             if (err) throw err;
             // console.log(result);
             callback(result)
@@ -22,6 +22,5 @@ async function mainframe(){
     //console.log('EEEEEEEEEEEEEEEee',entries);
     return entries
 }
-mainframe()
 
 module.exports = mainframe

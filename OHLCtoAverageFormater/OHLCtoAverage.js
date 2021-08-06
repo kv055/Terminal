@@ -28,7 +28,8 @@ let HistoricalPriceFormater = {
                 let dateobject = new Date(element[0]*1000)
                 let preishigh = parseFloat(element[2])
                 let preislow = parseFloat(element[3])
-                PriceSourceArray.push([((preishigh + preislow) / 2), dateobject.toISOString().split("T")[0]])  
+                PriceSourceArray.push([((preishigh + preislow) / 2), dateobject.toISOString()])
+                //.split("T")[0]  
             };
             
         return PriceSourceArray;

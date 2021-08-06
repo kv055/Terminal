@@ -1,35 +1,32 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
+//Imports
 //OHLCtoAverage
 const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 //Get our Strategy
 let TestObject = require(ubuntuPath+'/StrategyTrainer/ObjectFormater')
 
-
+//Initialize empty array for later use
 let tradingHistory = [];
 
 //Pair ETHUSD
 //BaseCollateral example:USD
 let BaseCollateral = 130;
-//ETH
 
-
-
-let train = async ()=>{
+let mainframe = async ()=>{
 
     //Get the Average historical price
     let AveragePriceObject = await AveragePrice.Kraken()
 
     //Get our Strategy
     let test = await TestObject()
-    // console.log('test',test);
 
-    let schwankungsArray = [];
+    let volatilityArray = [];
     test.forEach(element => {
          
         //#1 Von jedem element lastprice nehmen und in nen array pushen
-        schwankungsArray.push(element.lastPrice)
+        volatilityArray.push(element.lastPrice)
        
         //Specify at which trade you sold or bought
         let deirektion = null;
@@ -40,12 +37,12 @@ let train = async ()=>{
         }
        
        //#2 Wenn Array > 2 einträge hat, alte einträge löschen
-        if(schwankungsArray.length > 2){
-            schwankungsArray.shift()
+        if(volatilityArray.length > 2){
+            volatilityArray.shift()
         }
         //aus beiden einträgen schwanung berechnen und loggen
         let swing = function(){
-            let schwankung = ((schwankungsArray[1] / schwankungsArray[0]) - 1) * 100;
+            let schwankung = ((volatilityArray[1] / volatilityArray[0]) - 1) * 100;
             if (isNaN(schwankung)) {
                 return 0;
             } else {
@@ -95,12 +92,9 @@ let train = async ()=>{
 } 
 
 /* let testr = async ()=>{
-    console.log(await train());
+    console.log(await mainframe());
     
 }
 testr() */   
 
-module.exports = train
-//TODO: 
-// #1 Datanbank muss alle einträge Chronologich ordnen
-// im idealfall muss das gelogde immer buy sell abwechseln
+module.exports = mainframe
