@@ -1,21 +1,5 @@
-// class PlotOHLCObject {
-//     constructor(){
-//         this.x = [],
-//         //Y-Axis
-//         this.close  = [],
-//         this.high  = [],
-//         this.line = {col:'rgba(31,119,180,1)'}, 
-//         this.low = [],
-//         this.open = [],
-//         //Config
-//         this.type = 'candlestick', 
-//         this.xaxis = 'x', 
-//         this.yaxis ='y'
-//     }
-
-// }
- 
-
+//Formating Data to be displayed as line chart in a plot
+//Needs an object with the following key/value pairs as input {time: [],value: []}
 let creator = (array)=>{
     candleStick = {
         //X-Axis
@@ -68,3 +52,21 @@ let creator = (array)=>{
 }
 
 module.exports = creator
+
+// class PlotOHLCObject {
+//     constructor(){
+//         this.x = [],
+//         //Y-Axis
+//         this.close  = [],
+//         this.high  = [],
+//         this.line = {col:'rgba(31,119,180,1)'}, 
+//         this.low = [],
+//         this.open = [],
+//         //Config
+//         this.type = 'candlestick', 
+//         this.xaxis = 'x', 
+//         this.yaxis ='y'
+//     }
+
+// }
+ 

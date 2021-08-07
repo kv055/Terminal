@@ -4,6 +4,8 @@ let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 const APIanswer = require(ubuntuPath+"/Fetch/ApiAnswer")
 const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
 
+const path = require('path')
+let module = path.resolve('')
 const MAPastData = require(ubuntuPath+'/Strategies/MovingAverage/MAPastData')
 
 let changewatcher = [];

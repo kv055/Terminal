@@ -1,8 +1,9 @@
-let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
-let ubuntuPath = '/home/hackerboi/Dokumente/Terminal'
+//Format the output of the databaseRead Module to be rendered on a ploty graph
 
 //BotData
-const readDatabase = require(ubuntuPath+'/Strategies/LiveTradingBotData/databaseRead.js')
+const path = require('path')
+const readDatabasePath = path.join(__dirname,'../','/Strategies/LiveTradingBotData/databaseRead.js')
+const readDatabase = require(readDatabasePath)
 
 //Parameter: (Database, Collection, SearchParameters)
 let mainframe = async ()=>{
@@ -20,4 +21,5 @@ let mainframe = async ()=>{
     return globalReturn
 }
 
+//This module can only be executed inside a async function when imported
 module.exports = mainframe

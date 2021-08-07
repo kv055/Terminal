@@ -1,14 +1,14 @@
-let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
-let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
-
+const path = require('path')
+let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
+let CrossingsPath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
 //Need the Average Price for all calculations
 //OHLCtoAverage
-const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(AveragePricePath)
 //Need a Strategy to create Signals that can be read by the StrategyTrainer module
 //Example: create an object when two MA's cross each other
 
 //MACrossingsPast
-const Crossings = require(ubuntuPath+'/Strategies/MovingAverage/MACrossingsPast')
+const Crossings = require(CrossingsPath)
 
 let test = async () => {
     //Get the Average historical price

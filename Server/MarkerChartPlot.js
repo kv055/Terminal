@@ -1,5 +1,5 @@
-//Formating Data to be displayed as marker chart in a plot
-
+//Formating Data to be displayed as line chart in a plot
+//Needs an object with the following key/value pairs as input {time: [],value: []}
 class PlotMarkersObject {
     constructor(xAxis, yAxis){
       this.x = xAxis, 

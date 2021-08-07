@@ -1,11 +1,12 @@
-let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
-let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+const path = require('path')
+let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
+let TestObjectPath = path.join(__dirname,'../','/StrategyTrainer/ObjectFormater')
 
 //Imports
 //OHLCtoAverage
-const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(AveragePricePath)
 //Get our Strategy
-let TestObject = require(ubuntuPath+'/StrategyTrainer/ObjectFormater')
+let TestObject = require(TestObjectPath)
 
 //Initialize empty array for later use
 let tradingHistory = [];

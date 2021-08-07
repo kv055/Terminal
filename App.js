@@ -1,19 +1,27 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal'
 
+//Creating Path Variables for importing Modules
+const path = require('path')
+let APIanswerPath = path.join(__dirname,'../','/Fetch/ApiAnswer')
+let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
+let AveragePriceToRenderPath = path.join(__dirname,'../','/Server/AveragePriceToRender')
+let readDatabasePath = path.join(__dirname,'../','/Strategies/LiveTradingBotData/MAFormater')
+let MAPastDataPath = path.join(__dirname,'../','/Strategies/MovingAverage/MAPastData')
+let MACrossingPastPath = path.join(__dirname,'../','/Strategies/MovingAverage/MACrossingsPast')
 //Fetch
-const APIanswer = require(ubuntuPath+"/Fetch/ApiAnswer")
+const APIanswer = require(APIanswerPath)
 
 //OHLCtoAverage
-const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
-const AveragePriceToRender = require(ubuntuPath+'/Server/AveragePriceToRender')
+const AveragePrice = require(AveragePricePath)
+const AveragePriceToRender = require(AveragePriceToRenderPath)
 
 //Strategies
 //BotData
-const readDatabase = require(ubuntuPath+'/Strategies/LiveTradingBotData/MAFormater')
+const readDatabase = require(readDatabasePath)
 //Moving Average
-const MAPastData = require(ubuntuPath+'/Strategies/MovingAverage/MAPastData')
-const MACrossingPast = require(ubuntuPath+'/Strategies/MovingAverage/MACrossingsPast')
+const MAPastData = require(MAPastDataPath)
+const MACrossingPast = require(MACrossingPastPath)
 
 //Server
 const Server = require('./Server/Server.js')

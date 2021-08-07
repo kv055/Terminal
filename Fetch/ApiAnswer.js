@@ -1,27 +1,25 @@
 let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
 let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
 
+//Imports
 const fetch = require('node-fetch');
 const Kraken = require('./KrakenOHLCRequest');
 const binanceOHLC = require('./BinanceOHLCRequest')
 
-
 let KrakenLink = Kraken.OHLC.Url;
 let KrakenOptions = Kraken.Options;
-//Building a queŕry String to select the right properties in the Object(to avoid  this: answer.result.XETHZUSD)
-// let KrakenReturn = Kraken.OHLC.Pair;
 
 let binanceLink = binanceOHLC.Url+binanceOHLC.Pair.Bitcon+binanceOHLC.CandleSize.Day;
 
-//Make API-Call
-
+//Api-call object
+//The methods make a call to the Api
 let APIanswer = {
 
     Kraken : async function(){
         let answer = await fetch(KrakenLink, KrakenOptions)
         .then(res => res.json())
         .catch (error => console.log('Error Report: ',error))
-        //console.log(answer.result[Kraken.OHLC.Pair.Ethereum]);
+        //Alway select the output data manually
         return answer.result[Kraken.OHLC.Pair.Bitcoin];
     },
 
@@ -31,6 +29,9 @@ let APIanswer = {
         .catch (error => console.log('Error Report: ',error))
         return answer;
     }
+
+    //More Datasources can and should be added here
 }
 
+//This module can only be executed inside a async function when imported
 module.exports = APIanswer;

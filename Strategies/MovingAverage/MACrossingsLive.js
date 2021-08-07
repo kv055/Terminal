@@ -1,3 +1,5 @@
+const path = require('path')
+let module = path.resolve('')
 const MALiveData = require('/home/hackerboi/Dokumente/Terminal/Strategies/MovingAverage/MALiveData')
 
 //Compare two MA's to each other, and determine which one is bigger

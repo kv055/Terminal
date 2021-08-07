@@ -1,8 +1,8 @@
-let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
-let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+const path = require('path')
+let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
+const AveragePrice = require(AveragePricePath)
 
-//This file just formats the data from
-const AveragePrice = require(ubuntuPath+'/OHLCtoAverageFormater/OHLCtoAverage')
+//This file just formats the data so that it can be rendered into a plotly chart
 
 let runtime = async()=>{
     let Average = await AveragePrice.Kraken()

@@ -1,3 +1,5 @@
+//This is a config file which gets loaded into the fetch function
+//either just as a link or as a link and request body(if post request)
 const binanceOHLC = {
     Url : 'https://www.binance.com/api/v3/klines'
     // '&startTime='+start+'&endTime='+end;
@@ -22,11 +24,8 @@ const binanceOHLC = {
     Pair: {
         Bitcon: '?symbol=BTCUSDT',
         Ethereum: '?symbol=BTCUSDT'
-    },
+    }
 }
-
-
-
 
 
 module.exports = binanceOHLC

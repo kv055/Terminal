@@ -1,9 +1,12 @@
-let windowsPath = '/mnt/c/Users/Jürgen/Documents/Code/Terminal'
-let ubuntuPath = '/home/hackerboi/Dokumente/Terminal/'
+const path = require('path')
 
-const OHLCPlot = require(ubuntuPath+'/Server/OHLCChartPlot')
-const LinePlot = require(ubuntuPath+'/Server/LineChartPlot')
-const MarkerPlot = require(ubuntuPath+'/Server/MarkerChartPlot')
+const OHLCPlotPath = path.join(__dirname,'../','/Server/OHLCChartPlot')
+const LinePlotPath = path.join(__dirname,'../','/Server/LineChartPlot')
+const MarkerPlotPath = path.join(__dirname,'../','/Server/MarkerChartPlot')
+
+const OHLCPlot = require(OHLCPlotPath)
+const LinePlot = require(LinePlotPath)
+const MarkerPlot = require(MarkerPlotPath)
 
 const express = require("express");
 const cors = require('cors');
