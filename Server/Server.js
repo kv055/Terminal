@@ -12,6 +12,7 @@ const express = require("express");
 const cors = require('cors');
 
 const app = express();
+//Neccesary to prevent the Browser from blocking all incoming data (set allow origin headers)
 app.use(cors())
 
 let port = 5500
@@ -26,6 +27,7 @@ let Server = async (OHLC,LineGraph, MarkerGraph)=>{
     let Marker = MarkerPlot(await MarkerGraph)
     
     app.get('/Indicators',(request, response) => {
+      //HTTP Response Body
       response.json({
         Line
         ,Marker  
@@ -35,6 +37,7 @@ let Server = async (OHLC,LineGraph, MarkerGraph)=>{
     let CandleSticks = OHLCPlot(await OHLC)
 
     app.get('/OHLC',(request, response) => {
+      //HTTP Response Body
       response.json({
         CandleSticks
       });

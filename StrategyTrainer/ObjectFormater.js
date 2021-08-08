@@ -1,6 +1,6 @@
 const path = require('path')
 let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
-let CrossingsPath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
+let CrossingsPath = path.join(__dirname,'../','/Strategies/MovingAverage/MACrossingsPast')
 //Need the Average Price for all calculations
 //OHLCtoAverage
 const AveragePrice = require(AveragePricePath)

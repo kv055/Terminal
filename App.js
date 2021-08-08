@@ -3,12 +3,13 @@ let ubuntuPath = '/home/hackerboi/Dokumente/Terminal'
 
 //Creating Path Variables for importing Modules
 const path = require('path')
-let APIanswerPath = path.join(__dirname,'../','/Fetch/ApiAnswer')
-let AveragePricePath = path.join(__dirname,'../','/OHLCtoAverageFormater/OHLCtoAverage')
-let AveragePriceToRenderPath = path.join(__dirname,'../','/Server/AveragePriceToRender')
-let readDatabasePath = path.join(__dirname,'../','/Strategies/LiveTradingBotData/MAFormater')
-let MAPastDataPath = path.join(__dirname,'../','/Strategies/MovingAverage/MAPastData')
-let MACrossingPastPath = path.join(__dirname,'../','/Strategies/MovingAverage/MACrossingsPast')
+let APIanswerPath = path.join(__dirname,'/Fetch/ApiAnswer')
+let AveragePricePath = path.join(__dirname,'/OHLCtoAverageFormater/OHLCtoAverage')
+let AveragePriceToRenderPath = path.join(__dirname,'/Server/AveragePriceToRender')
+let readDatabasePath = path.join(__dirname,'/Strategies/LiveTradingBotData/MAFormater')
+let MAPastDataPath = path.join(__dirname,'/Strategies/MovingAverage/MAPastData')
+let MACrossingPastPath = path.join(__dirname,'/Strategies/MovingAverage/MACrossingsPast')
+//Importing Modules
 //Fetch
 const APIanswer = require(APIanswerPath)
 
@@ -30,7 +31,7 @@ const Server = require('./Server/Server.js')
 const StrategyVisualizer = require('./StrategyTrainer/TradesVisualizer')
 
 
-let Test = async()=>{
+let runtime = async()=>{
     //Everything that gets rendered to the Plot has to be loaded in here
     let OHLC = await APIanswer.Kraken()
     let Average = await AveragePrice.Kraken()
@@ -53,5 +54,5 @@ let Test = async()=>{
 
     Server(PriceGraph, LineGraph, MarkerGraph)
 }
-Test()
+runtime()
 

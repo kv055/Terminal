@@ -2,7 +2,7 @@
 
 //BotData
 const path = require('path')
-const readDatabasePath = path.join(__dirname,'../','/Strategies/LiveTradingBotData/databaseRead.js')
+const readDatabasePath = path.join(__dirname,'../','/LiveTradingBotData/databaseRead.js')
 const readDatabase = require(readDatabasePath)
 
 //Parameter: (Database, Collection, SearchParameters)
