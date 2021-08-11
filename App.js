@@ -49,7 +49,7 @@ let runtime = async()=>{
     //These Variables going to the server
     let PriceGraph = OHLC
     let LineGraph = [MAPast5,MAPast10]
-    let MarkerGraph = [Datenbank]
+    let MarkerGraph = []
     // console.log('MAPast5: ',MAPast5);
 
     Server(PriceGraph, LineGraph, MarkerGraph)
