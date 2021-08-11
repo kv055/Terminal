@@ -12,12 +12,13 @@ const express = require("express");
 const cors = require('cors');
 
 const app = express();
-//Neccesary to prevent the Browser from blocking all incoming data (set allow origin headers)
+//Cors is neccesary to prevent the Browser from blocking all incoming data (set allow origin headers)
 app.use(cors())
 
 let port = 5500
+
 app.listen(port, ()=>{
-    console.log("Alles Roger auf Port ",port);
+    console.log("Terminal Running on Port: ",port);
 });
 
 

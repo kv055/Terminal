@@ -18,7 +18,7 @@ const AveragePrice = require(AveragePricePath)
 const AveragePriceToRender = require(AveragePriceToRenderPath)
 
 //Strategies
-//BotData
+//Connect to the Database to get data from the TradingBot package
 const readDatabase = require(readDatabasePath)
 //Moving Average
 const MAPastData = require(MAPastDataPath)
@@ -44,7 +44,7 @@ let runtime = async()=>{
     let CrossingPast = await MACrossingPast(5,10, Average)
 
     let Tester = await StrategyVisualizer()
-    let Datenbank = await readDatabase()
+    // let Datenbank = await readDatabase()
 
     //These Variables going to the server
     let PriceGraph = OHLC
